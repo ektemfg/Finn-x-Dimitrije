@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct Finn_x_DimitrijeApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                ContentView()
+                    .navigationTitle(Text("Finn x Dimitrije"))
+            }
         }
     }
 }
