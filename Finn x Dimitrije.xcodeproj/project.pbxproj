@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1754C65E29D9EDF7000CADF6 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754C65D29D9EDF7000CADF6 /* NotificationsView.swift */; };
+		1754C66029D9EE03000CADF6 /* NotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754C65F29D9EE03000CADF6 /* NotificationsViewModel.swift */; };
+		1754C66229D9EE14000CADF6 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754C66129D9EE14000CADF6 /* FavouritesView.swift */; };
+		1754C66429D9EE25000CADF6 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754C66329D9EE25000CADF6 /* FavouritesViewModel.swift */; };
 		177BE72D29D6E55600A1034E /* Finn_x_DimitrijeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BE72C29D6E55600A1034E /* Finn_x_DimitrijeApp.swift */; };
 		177BE72F29D6E55600A1034E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BE72E29D6E55600A1034E /* ContentView.swift */; };
 		177BE73129D6E55900A1034E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177BE73029D6E55900A1034E /* Assets.xcassets */; };
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1754C65D29D9EDF7000CADF6 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		1754C65F29D9EE03000CADF6 /* NotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewModel.swift; sourceTree = "<group>"; };
+		1754C66129D9EE14000CADF6 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		1754C66329D9EE25000CADF6 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
 		177BE72929D6E55600A1034E /* Finn x Dimitrije.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Finn x Dimitrije.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		177BE72C29D6E55600A1034E /* Finn_x_DimitrijeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finn_x_DimitrijeApp.swift; sourceTree = "<group>"; };
 		177BE72E29D6E55600A1034E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -170,6 +178,8 @@
 				177BE75C29D85EF700A1034E /* Components */,
 				177BE75F29D85F3700A1034E /* AdListView.swift */,
 				177BE76129D85F5200A1034E /* AdDetailsView.swift */,
+				1754C65D29D9EDF7000CADF6 /* NotificationsView.swift */,
+				1754C66129D9EE14000CADF6 /* FavouritesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -179,6 +189,8 @@
 			children = (
 				177BE76329D85F7300A1034E /* AdListViewModel.swift */,
 				177BE76529D85F8A00A1034E /* AdDetailsViewModel.swift */,
+				1754C65F29D9EE03000CADF6 /* NotificationsViewModel.swift */,
+				1754C66329D9EE25000CADF6 /* FavouritesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -342,17 +354,21 @@
 			files = (
 				177BE75E29D85F1D00A1034E /* AdView.swift in Sources */,
 				177BE76E29D8658100A1034E /* Ad.swift in Sources */,
+				1754C66229D9EE14000CADF6 /* FavouritesView.swift in Sources */,
 				177BE76829D85FEA00A1034E /* Endpoints.swift in Sources */,
 				177BE72F29D6E55600A1034E /* ContentView.swift in Sources */,
 				177BE72D29D6E55600A1034E /* Finn_x_DimitrijeApp.swift in Sources */,
+				1754C66029D9EE03000CADF6 /* NotificationsViewModel.swift in Sources */,
 				177BE76429D85F7300A1034E /* AdListViewModel.swift in Sources */,
 				177BE76029D85F3700A1034E /* AdListView.swift in Sources */,
+				1754C66429D9EE25000CADF6 /* FavouritesViewModel.swift in Sources */,
 				17CA1DB829D8893400DAA2AD /* Color+Extensions.swift in Sources */,
 				177BE77029D86FCA00A1034E /* Logger.swift in Sources */,
 				177BE76A29D8604700A1034E /* NetworkError.swift in Sources */,
 				177BE76229D85F5200A1034E /* AdDetailsView.swift in Sources */,
 				177BE76629D85F8A00A1034E /* AdDetailsViewModel.swift in Sources */,
 				177BE76C29D860A300A1034E /* DataService.swift in Sources */,
+				1754C65E29D9EDF7000CADF6 /* NotificationsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

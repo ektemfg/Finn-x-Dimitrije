@@ -32,8 +32,7 @@ struct Finn_x_DimitrijeApp: App {
                     .tag(0)
                     NavigationView {
                         // TODO: Make Varslinger page
-                        Text("Varslinger")
-                            .navigationTitle("Varslinger")
+                        NotificationsView()
                     }
                     .tabItem {
                         Image("bell")

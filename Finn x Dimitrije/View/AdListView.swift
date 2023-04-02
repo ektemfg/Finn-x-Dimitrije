@@ -9,9 +9,9 @@ import SwiftUI
 
 struct AdListView: View {
     @StateObject var vm = AdListViewModel()
-      var adList: [Ad] {
-          vm.adList
-      }
+    var adList: [Ad] {
+        vm.adList
+    }
     var body: some View {
         List(adList, id: \.id) { ad in
             VStack{
@@ -22,7 +22,7 @@ struct AdListView: View {
         }
         .listStyle(.plain)
         
-    
+        
         .navigationTitle(
             Text("Torget")
         )
@@ -35,13 +35,13 @@ struct AdListView: View {
                 Text("Torget")
             }
         }
-            
-        , trailing: Button(action: {}) {
+                            
+                            , trailing: Button(action: {}) {
             Text("Lagre søk")
-                                        .foregroundColor(.blue)
+                .foregroundColor(.blue)
         })
     }
-        
+    
 }
 
 
