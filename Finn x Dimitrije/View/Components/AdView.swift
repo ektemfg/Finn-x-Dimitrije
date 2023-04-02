@@ -104,6 +104,9 @@ struct AdView: View {
             }
         }
         .background(Color(red: 1, green: 1, blue: 1))
+        .onAppear{
+            self.isFavorite = AdListViewModel.shared.favsContainsAd(ad: ad)
+        }
     }
 }
 

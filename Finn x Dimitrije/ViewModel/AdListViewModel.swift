@@ -110,7 +110,7 @@ class AdListViewModel: ObservableObject {
         do {
             Logger.log("Finding Ads that contain saved ids...", type:.info)
             let favAdIds = Set(favoriteAds)
-            let adsToAdd = adList.filter { favAdIds.contains($0.id) }
+            let adsToAdd = adList.filter {favoriteAds.contains($0.id)}
             DispatchQueue.main.async {
                       self.favAdList = adsToAdd
                   }

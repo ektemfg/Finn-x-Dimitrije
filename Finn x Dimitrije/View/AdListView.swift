@@ -40,6 +40,7 @@ struct AdListView: View {
                 .foregroundColor(.blue)
         })
     }
+        
     
 }
 
