@@ -56,16 +56,26 @@ class AdListViewModel: ObservableObject {
         }
     }
     
-    func userDefaultsOperation(_ operation: FavouriteOperation, ad: Ad) {
+    func userDefaultsOperation(_ operation: FavouriteOperation, ad: Ad?) {
           switch operation {
           case .addFavorite:
-              favoriteAds.insert(ad.id)
+              guard ad != nil else {
+                  Logger.log("Tried to add invalid ad as Favourite.")
+                  return
+              }
+              favoriteAds.insert(ad!.id)
               saveFavoriteAds()
           case .removeFavorite:
-              favoriteAds.remove(ad.id)
+              guard ad != nil else {
+                  Logger.log("Tried to remove invalid ad from Favourites.")
+                  return
+              }
+              favoriteAds.remove(ad!.id)
+              favAdList.removeAll(where: { $0.id == ad!.id})
               saveFavoriteAds()
           case .clearFavorites:
               favoriteAds.removeAll()
+              favAdList.removeAll()
               clearFavoriteAds()
           case .loadFavorites:
               favoriteAds.removeAll()

@@ -32,7 +32,7 @@ struct AdListView: View {
                 Image(systemName: "chevron.left")
                     .font(.subheadline)
                     .foregroundColor(.blue)
-                Text("Torget")
+                Text("Hjem")
             }
         }
                             , trailing: Button(action: {}) {

@@ -67,8 +67,7 @@ struct Finn_x_DimitrijeApp: App {
                     .tag(3)
                     NavigationView {
                         // TODO: Make My Ads page
-                        Text("Favoriter")
-                            .navigationTitle("Favoriter")
+                        FavouritesView()
                     }
                     .tabItem {
                         Image(selectedTab == 4 ? "fav" : "notFav")
