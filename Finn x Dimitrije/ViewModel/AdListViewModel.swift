@@ -11,7 +11,6 @@ enum FavouriteOperation {
     case addFavorite
     case removeFavorite
     case clearFavorites
-    case loadFavorites
 }
 
 class AdListViewModel: ObservableObject {
@@ -25,6 +24,7 @@ class AdListViewModel: ObservableObject {
     
     init() {
         self.goFetchAds()
+        self.loadAds()
     }
     
     static var shared: AdListViewModel = {
@@ -57,31 +57,29 @@ class AdListViewModel: ObservableObject {
     }
     
     func userDefaultsOperation(_ operation: FavouriteOperation, ad: Ad?) {
-          switch operation {
-          case .addFavorite:
-              guard ad != nil else {
-                  Logger.log("Tried to add invalid ad as Favourite.")
-                  return
-              }
-              favoriteAds.insert(ad!.id)
-              saveFavoriteAds()
-          case .removeFavorite:
-              guard ad != nil else {
-                  Logger.log("Tried to remove invalid ad from Favourites.")
-                  return
-              }
-              favoriteAds.remove(ad!.id)
-              favAdList.removeAll(where: { $0.id == ad!.id})
-              saveFavoriteAds()
-          case .clearFavorites:
-              favoriteAds.removeAll()
-              favAdList.removeAll()
-              clearFavoriteAds()
-          case .loadFavorites:
-              favoriteAds.removeAll()
-              loadAds()
-          }
-      }
+        switch operation {
+        case .addFavorite:
+            guard ad != nil else {
+                Logger.log("Tried to add invalid ad as Favourite.")
+                return
+            }
+            self.favoriteAds.insert(ad!.id)
+            saveFavoriteAds()
+        case .removeFavorite:
+            guard ad != nil else {
+                Logger.log("Tried to remove invalid ad from Favourites.")
+                return
+            }
+            self.favoriteAds.remove(ad!.id)
+            self.favAdList.removeAll(where: { $0.id == ad!.id})
+            
+            saveFavoriteAds()
+        case .clearFavorites:
+            self.favoriteAds.removeAll()
+            self.favAdList.removeAll()
+            clearFavoriteAds()
+        }
+    }
       
       private func saveFavoriteAds() {
           Logger.log("Saving Favorites to UserDefaults.", type: .info)
@@ -94,18 +92,45 @@ class AdListViewModel: ObservableObject {
           UserDefaults.standard.removeObject(forKey: "favoriteAds")
       }
     
-    private func loadAds() {
+     func loadAds() {
         do {
             Logger.log("Loading Favorites to UserDefaults.", type: .info)
             if let savedIds = UserDefaults.standard.array(forKey: "favoriteAds") as? [String] {
-                let favoriteAds = adList.filter { savedIds.contains($0.id) }
-                self.favAdList = favoriteAds
+                self.favoriteAds = Set(savedIds)
+                setAdsList()
             } else {
                 throw AppError.invalidUserDefaults
             }
         } catch let error {
             Logger.log("Error loading Favorites from UserDefaults: \(error.localizedDescription)", type: .error)
         }
+    }
+    
+    private func setAdsList() {
+        do {
+            Logger.log("Finding Ads that contain saved ids...", type:.info)
+            let favAdIds = Set(favoriteAds)
+            let adsToAdd = adList.filter { favAdIds.contains($0.id) }
+            DispatchQueue.main.async {
+                      self.favAdList = adsToAdd
+                  }
+        }
+    }
+
+
+     func favsContainsAd(ad: Ad) -> Bool {
+        var result: Bool = false
+        do {
+            if let savedIds = UserDefaults.standard.array(forKey: "favoriteAds") as? [String] {
+                result = savedIds.contains(ad.id)
+            } else {
+                throw AppError.invalidUserDefaults
+            }
+
+        } catch let error {
+            Logger.log("Error loading Favorites from UserDefaults: \(error.localizedDescription)", type: .error)
+        }
+        return result
     }
 
 

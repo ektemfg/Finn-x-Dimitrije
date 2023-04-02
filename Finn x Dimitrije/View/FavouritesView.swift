@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct FavouritesView: View {
-    @StateObject private var vm = AdListViewModel.shared
+    @ObservedObject private var vm = AdListViewModel.shared
     var adList: [Ad] {
         vm.favAdList
     }
+    init() {
+            vm.loadAds()
+        }
     var body: some View {
         if adList.isEmpty {
             VStack{
@@ -75,8 +78,8 @@ struct FavouritesView: View {
             })
         }
     }
-    
 }
+
 
 struct FavouritesView_Previews: PreviewProvider {
     static var previews: some View {

@@ -9,18 +9,14 @@ import SwiftUI
 
 struct AdView: View {
     let ad: Ad
-    @StateObject private var vm = AdListViewModel.shared
-    
-    @State var isFavorite = false {
-        didSet{
-            if isFavorite {
-                vm.userDefaultsOperation(.addFavorite, ad: ad)
-            } else {
-                vm.userDefaultsOperation(.removeFavorite, ad: ad)
-            }
-        }
-    }
-    
+     @State var isFavorite: Bool
+     @StateObject private var vm: AdListViewModel
+     
+     init(ad: Ad) {
+         self.ad = ad
+         self._isFavorite = State(initialValue: AdListViewModel.shared.favsContainsAd(ad: ad))
+         self._vm = StateObject(wrappedValue: AdListViewModel.shared)
+     }
     var body: some View {
         HStack(spacing: 10) {
             VStack {
@@ -86,6 +82,12 @@ struct AdView: View {
                         }
                     }
                 }
+                .onChange(of: isFavorite) { value in
+                    if value {
+                        vm.userDefaultsOperation(.addFavorite, ad: ad)
+                    } else {
+                        vm.userDefaultsOperation(.removeFavorite, ad: ad)
+                    }}
                 .padding(.top, 2)
                 
                 Text("\(ad.description ?? "Kul ting")")

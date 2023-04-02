@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AdListView: View {
-    @StateObject private var vm = AdListViewModel.shared
+    @ObservedObject private var vm = AdListViewModel.shared
     var adList: [Ad] {
         vm.adList
     }
