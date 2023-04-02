@@ -8,10 +8,42 @@
 import SwiftUI
 
 struct AdListView: View {
+    @StateObject var vm = AdListViewModel()
+      var adList: [Ad] {
+          vm.adList
+      }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(adList, id: \.id) { ad in
+            VStack{
+                Divider()
+                AdView(ad: ad)
+            }
+            .listRowSeparator(.hidden)
+        }
+        .listStyle(.plain)
+        
+    
+        .navigationTitle(
+            Text("Torget")
+        )
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(leading: Button(action: {}) {
+            HStack{
+                Image(systemName: "chevron.left")
+                    .font(.subheadline)
+                    .foregroundColor(.blue)
+                Text("Torget")
+            }
+        }
+            
+        , trailing: Button(action: {}) {
+            Text("Lagre søk")
+                                        .foregroundColor(.blue)
+        })
     }
+        
 }
+
 
 struct AdListView_Previews: PreviewProvider {
     static var previews: some View {

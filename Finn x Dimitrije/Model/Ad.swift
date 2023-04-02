@@ -64,7 +64,7 @@ struct Price: Codable {
 
 struct Favourite: Codable {
     let adId: String
-    let adType: AdType
+    let adType: String
     
     enum CodingKeys: String, CodingKey {
         case adId = "itemId"
@@ -77,5 +77,5 @@ struct ShippingOption: Codable {
 }
 
 enum Label: String, Codable {
-case fiksFerdig = "Fiks Ferdig"
+case fiksFerdig = "Fiks ferdig"
 }
