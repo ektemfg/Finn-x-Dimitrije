@@ -43,49 +43,53 @@ struct NotificationsView: View {
                     .padding(.top, -5)
             }
             if selectedOption == .savedSearch {
-                HStack{
-                    Image(systemName: "magnifyingglass")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .background(Color.white)
-                    
-                    VStack(alignment: .leading){
-                        Text("Fant du ingenting kult enda?")
-                            .bold()
-                            .font(.system(size: 17, weight: .medium))
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(1)
-                            .padding(.horizontal, 10)
-                        Text("Her vil du få søk som du har lagret, gå og FINN noe og kom tilbake!")
-                            .font(.system(size:16))
-                            .padding(.horizontal, 10)
+                ScrollView{
+                    HStack{
+                        Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .background(Color.white)
+                        
+                        VStack(alignment: .leading){
+                            Text("Fant du ingenting kult enda?")
+                                .bold()
+                                .font(.system(size: 17, weight: .medium))
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(1)
+                                .padding(.horizontal, 10)
+                            Text("Her vil du få søk som du har lagret, gå og FINN noe og kom tilbake!")
+                                .font(.system(size:16))
+                                .padding(.horizontal, 10)
+                        }
                     }
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 20)
                 }
-                .padding(.horizontal, 5)
-                .padding(.vertical, 20)
             }
             else {
-                HStack{
-                    Image("notifications")
-                        .resizable()
-                        .frame(width: 80, height: 80)
-                        .background(Color.darkerGreyColor)
-                        .cornerRadius(50)
-                    
-                    VStack(alignment: .leading){
-                        Text("Velkommen til varslinger")
-                            .bold()
-                            .font(.system(size: 17, weight: .medium))
-                            .multilineTextAlignment(.leading)
-                            .lineLimit(1)
-                            .padding(.horizontal, 10)
-                        Text("Her vil du få varslinger om dine annonser, favoritter og nytt fra FINN")
-                            .font(.system(size:16))
-                            .padding(.horizontal, 10)
+                ScrollView{
+                    HStack{
+                        Image("notifications")
+                            .resizable()
+                            .frame(width: 80, height: 80)
+                            .background(Color.darkerGreyColor)
+                            .cornerRadius(50)
+                        
+                        VStack(alignment: .leading){
+                            Text("Velkommen til varslinger")
+                                .bold()
+                                .font(.system(size: 17, weight: .medium))
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(1)
+                                .padding(.horizontal, 10)
+                            Text("Her vil du få varslinger om dine annonser, favoritter og nytt fra FINN")
+                                .font(.system(size:16))
+                                .padding(.horizontal, 10)
+                        }
                     }
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 20)
                 }
-                .padding(.horizontal, 5)
-                .padding(.vertical, 20)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

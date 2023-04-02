@@ -18,7 +18,7 @@ class DataService: ObservableObject {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 Logger.log("Could not fetch from \(url.description)", type: .error)
-                completionHandler(.failure(NetworkError.invalidUrl))
+                completionHandler(.failure(AppError.invalidUrl))
                 return
             }
             do {
@@ -29,7 +29,7 @@ class DataService: ObservableObject {
                 Logger.log("Could not decode JSON", type: .error)
                 Logger.log(error.localizedDescription, type: .error)
                 print(error)
-                completionHandler(.failure(NetworkError.invalidJson))
+                completionHandler(.failure(AppError.invalidJson))
             }
             
         }

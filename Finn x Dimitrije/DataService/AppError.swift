@@ -7,9 +7,10 @@
 
 import Foundation
 
-enum NetworkError: Error {
+enum AppError: Error {
     case invalidJson
     case invalidData
     case invalidUrl
     case noNetwork
+    case invalidUserDefaults
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AdListView: View {
-    @StateObject var vm = AdListViewModel()
+    @StateObject private var vm = AdListViewModel.shared
     var adList: [Ad] {
         vm.adList
     }
@@ -35,7 +35,6 @@ struct AdListView: View {
                 Text("Torget")
             }
         }
-                            
                             , trailing: Button(action: {}) {
             Text("Lagre søk")
                 .foregroundColor(.blue)

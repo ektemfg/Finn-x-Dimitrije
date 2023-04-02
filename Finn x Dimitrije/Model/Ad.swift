@@ -29,6 +29,10 @@ struct Ad: Codable {
         return self.shippingOption != nil
     }
     
+    var hoursSinceAdded: Int {
+        return Int.random(in: 1...24)
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, description, url
         case adType = "ad-type"

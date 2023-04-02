@@ -9,7 +9,17 @@ import SwiftUI
 
 struct AdView: View {
     let ad: Ad
-    @State var isFavorite = false
+    @StateObject private var vm = AdListViewModel.shared
+    
+    @State var isFavorite = false {
+        didSet{
+            if isFavorite {
+                vm.userDefaultsOperation(.addFavorite, ad: ad)
+            } else {
+                vm.userDefaultsOperation(.removeFavorite, ad: ad)
+            }
+        }
+    }
     
     var body: some View {
         HStack(spacing: 10) {
@@ -58,20 +68,22 @@ struct AdView: View {
             }
             
             VStack(alignment: .leading) {
-                HStack{
-                    Text("\(Int.random(in: 1...24)) timer siden")
-                        .foregroundColor(.gray)
-                        .font(.custom("default", size: 10))
-                    Text("\(ad.location ?? "Oslo")")
-                        .foregroundColor(.gray)
-                        .font(.custom("default", size: 10))
-                    Spacer()
-                    Button(action: {
-                        isFavorite.toggle()
-                    }) {
-                        Image(systemName: isFavorite ? "heart.fill" : "heart")
-                            .foregroundColor(isFavorite ? Color.red : Color.gray)
-                            .font(.system(size: 20))
+                Button(action: {}) {
+                    HStack {
+                        Text("\(ad.hoursSinceAdded) timer siden")
+                            .foregroundColor(.gray)
+                            .font(.custom("default", size: 10))
+                        Text("\(ad.location ?? "Oslo")")
+                            .foregroundColor(.gray)
+                            .font(.custom("default", size: 10))
+                        Spacer()
+                        Button(action: {
+                            isFavorite.toggle()
+                        }) {
+                            Image(systemName: isFavorite ? "heart.fill" : "heart")
+                                .foregroundColor(isFavorite ? Color.blue : Color.gray)
+                                .font(.system(size: 20))
+                        }
                     }
                 }
                 .padding(.top, 2)
