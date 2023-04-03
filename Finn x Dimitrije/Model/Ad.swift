@@ -30,7 +30,14 @@ struct Ad: Codable {
     }
     
     var hoursSinceAdded: Int {
-        return Int.random(in: 1...24)
+        switch self.adType{
+        case .b2B :
+            return 3
+        case .bap:
+            return 7
+        case .realestate:
+           return 12
+        }
     }
     
     enum CodingKeys: String, CodingKey {

@@ -18,6 +18,9 @@ struct AdView: View {
          self._vm = StateObject(wrappedValue: AdListViewModel.shared)
      }
     var body: some View {
+        NavigationLink("",
+                       destination: AdDetailsView(ad: ad)).opacity(0)
+        .buttonStyle(PlainButtonStyle())
         HStack(spacing: 10) {
             VStack {
                 ZStack(alignment: .topLeading) {
@@ -66,7 +69,7 @@ struct AdView: View {
             VStack(alignment: .leading) {
                 Button(action: {}) {
                     HStack {
-                        Text("\(ad.hoursSinceAdded) timer siden")
+                        Text("\(ad.hoursSinceAdded) \(ad.adType == .realestate ? "dager" : "timer") siden")
                             .foregroundColor(.gray)
                             .font(.custom("default", size: 10))
                         Text("\(ad.location ?? "Oslo")")
