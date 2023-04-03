@@ -15,6 +15,7 @@ enum FavouriteOperation {
 
 class AdListViewModel: ObservableObject {
     @Published var favsOnly: Bool = false
+    @Published var onlyOffline: Bool = false
     let dataService = DataService.shared
     @Published var adList: [Ad] = []
     @Published var favAdList: [Ad] = []
@@ -40,20 +41,36 @@ class AdListViewModel: ObservableObject {
             Logger.log("All ads are fetched", type: .warning)
             return
         }
-        dataService.fetchAds() { result in
-            switch result {
-            case .success(let response):
-                self.totalNumberOfAds = response.size
-                DispatchQueue.main.async {
-                    self.adList = response.items
-                    self.fetchedAllAds = self.adList.count >= self.totalNumberOfAds
+        if NetworkChecker.isDeviceConnectedToNetwork() {
+            dataService.fetchAds() { result in
+                switch result {
+                case .success(let response):
+                    self.totalNumberOfAds = response.size
+                    DispatchQueue.main.async {
+                        self.adList = response.items
+                        self.fetchedAllAds = self.adList.count >= self.totalNumberOfAds
+                    }
+                case .failure(let error):
+                    Logger.log(error.localizedDescription, type: .error)
                 }
-            case .failure(let error):
-                Logger.log(error.localizedDescription, type: .error)
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
             }
-            DispatchQueue.main.async {
-                self.isLoading = false
-            }
+        } else {
+            Logger.log("Device is offline🥶, trying to fetch favorites from UserDefaults", type:.critical)
+            let defaults = UserDefaults.standard
+                    if let data = defaults.data(forKey: "backupPlanFavorites"),
+                       let ads = try? JSONDecoder().decode([Ad].self, from: data) {
+                        self.adList = ads
+                        self.favAdList = ads
+                        self.fetchedAllAds = true
+                    }
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.onlyOffline = true
+                    }
+            
         }
     }
     
@@ -91,11 +108,12 @@ class AdListViewModel: ObservableObject {
       private func clearFavoriteAds() {
           Logger.log("Removing all Favorites from UserDefaults.", type: .info)
           UserDefaults.standard.removeObject(forKey: "favoriteAds")
+          UserDefaults.standard.removeObject(forKey: "backupPlanFavorites")
       }
     
      func loadAds() {
         do {
-            Logger.log("Loading Favorites to UserDefaults.", type: .info)
+            Logger.log("Loading Favorites from UserDefaults.", type: .info)
             if let savedIds = UserDefaults.standard.array(forKey: "favoriteAds") as? [String] {
                 self.favoriteAds = Set(savedIds)
                 setAdsList()
@@ -111,12 +129,19 @@ class AdListViewModel: ObservableObject {
         do {
             Logger.log("Finding Ads that contain saved ids...", type:.info)
             let favAdIds = Set(favoriteAds)
-            let adsToAdd = adList.filter {favoriteAds.contains($0.id)}
+            let adsToAdd = adList.filter { favAdIds.contains($0.id) }
             DispatchQueue.main.async {
-                      self.favAdList = adsToAdd
-                  }
+                self.favAdList = adsToAdd
+                let encoder = JSONEncoder()
+                if let encoded = try? encoder.encode(adsToAdd) {
+                    let defaults = UserDefaults.standard
+                    Logger.log("Saving favorites for offline use to UserDefaults",type:.info)
+                    defaults.set(encoded, forKey: "backupPlanFavorites")
+                }
+            }
         }
     }
+
 
 
      func favsContainsAd(ad: Ad) -> Bool {

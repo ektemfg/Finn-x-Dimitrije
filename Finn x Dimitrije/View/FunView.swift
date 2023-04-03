@@ -54,6 +54,7 @@ struct FunView: View {
                 Toggle("Favorites only", isOn: $favsOnly)
                            .onChange(of: favsOnly) { value in
                                vm.favsOnly.toggle()
+                               vm.onlyOffline = false
                            }
                            .padding(.horizontal, 10)
                 Spacer()

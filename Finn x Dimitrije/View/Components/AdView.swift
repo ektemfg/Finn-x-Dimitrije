@@ -32,7 +32,12 @@ struct AdView: View {
                                 .frame(width: 120, height: 100)
                                 .cornerRadius(8)
                         } placeholder: {
-                            ProgressView()
+                            if NetworkChecker.isDeviceConnectedToNetwork() {
+                                ProgressView()
+                            } else {
+                                Image("")
+                                    .frame(width: 120, height: 100)
+                            }
                         }
                     } else {
                         Image("bilde")

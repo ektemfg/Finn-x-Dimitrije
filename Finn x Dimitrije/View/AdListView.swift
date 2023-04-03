@@ -13,7 +13,7 @@ struct AdListView: View {
         vm.favsOnly ? vm.favAdList : vm.adList
     }
     var body: some View {
-        if adList.isEmpty {
+        if adList.isEmpty || vm.onlyOffline == true {
             VStack{
                 Divider()
                 Spacer()
@@ -31,9 +31,9 @@ struct AdListView: View {
                     .resizable()
                     .frame(width: 250, height: 250)
                 VStack(){
-                    Text("Sjekk om du er tilkoblet.")
+                    Text("Ingen nettilgang!")
                         .font(.system(.headline))
-                    Text("PS. Du kan alltid se dine favoritter")
+                    Text("PS. Du kan alltid se dine favoritter offline")
                         .font(.system(.headline))
                 }
                 Spacer()

@@ -27,6 +27,7 @@
 		177BE77029D86FCA00A1034E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BE76F29D86FCA00A1034E /* Logger.swift */; };
 		17C5AB2229DA8911001EFC81 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C5AB2129DA8911001EFC81 /* MessagesView.swift */; };
 		17C5AB2429DA92A1001EFC81 /* FunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C5AB2329DA92A1001EFC81 /* FunView.swift */; };
+		17C5AB2629DAA03E001EFC81 /* NetworkChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C5AB2529DAA03E001EFC81 /* NetworkChecker.swift */; };
 		17CA1DB829D8893400DAA2AD /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CA1DB729D8893400DAA2AD /* Color+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		177BE76F29D86FCA00A1034E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		17C5AB2129DA8911001EFC81 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		17C5AB2329DA92A1001EFC81 /* FunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunView.swift; sourceTree = "<group>"; };
+		17C5AB2529DAA03E001EFC81 /* NetworkChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkChecker.swift; sourceTree = "<group>"; };
 		17CA1DB729D8893400DAA2AD /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +209,7 @@
 			children = (
 				177BE76F29D86FCA00A1034E /* Logger.swift */,
 				17CA1DB729D8893400DAA2AD /* Color+Extensions.swift */,
+				17C5AB2529DAA03E001EFC81 /* NetworkChecker.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				17C5AB2229DA8911001EFC81 /* MessagesView.swift in Sources */,
 				1754C66229D9EE14000CADF6 /* FavouritesView.swift in Sources */,
 				177BE76829D85FEA00A1034E /* Endpoints.swift in Sources */,
+				17C5AB2629DAA03E001EFC81 /* NetworkChecker.swift in Sources */,
 				177BE72F29D6E55600A1034E /* ContentView.swift in Sources */,
 				177BE72D29D6E55600A1034E /* Finn_x_DimitrijeApp.swift in Sources */,
 				177BE76429D85F7300A1034E /* AdListViewModel.swift in Sources */,
