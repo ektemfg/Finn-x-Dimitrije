@@ -90,3 +90,5 @@ struct ShippingOption: Codable {
 enum Label: String, Codable {
 case fiksFerdig = "Fiks ferdig"
 }
+
+
