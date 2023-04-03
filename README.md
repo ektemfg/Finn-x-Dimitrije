@@ -37,6 +37,7 @@ While I initially started with multiple viewmodels, I consolidated them to a sin
 I'm still unsure if the approach I took to running API calls from DataService is optimal, but it's currently working well.
 
 What else you could have done with more time:
+SplashScreen of course 😉
 If I had more time, I would definitely focus on implementing Combine and using sinks instead of the current approach. 
 While I am still learning how to use it properly, I believe that it would greatly improve the efficiency and possibly readability of the code. 
 
