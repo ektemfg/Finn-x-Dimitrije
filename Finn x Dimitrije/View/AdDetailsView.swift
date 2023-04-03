@@ -148,7 +148,90 @@ struct AdDetailsView: View {
                                 }
                             )
                             .padding(.top, 10)
-                        Text("\(ad.description) er ganske kul ting du kan kjøpe her på finn. I tillegg til den, finnes det hundrevis av ting innenfor \(ad.adType)")
+                        Text("\(ad.description!)" + " er ganske kul ting en fyr selger her og du kan kjøpe det på FINN til bare \(ad.price?.value ?? 0) kroner. I tillegg til den, finnes det tusenvis av lignende ting. \nMen det er ikke alt! Sjekk gjerne ut andre fete ting.")
+                            .padding(.horizontal, 10)
+                            .padding(.top, 5)
+                            .font(.subheadline)
+                            .fontWeight(.light)
+                        HStack{
+                            Text("+ Vis hele beskrivelsen")
+                                .font(.system(size:15))
+                                .foregroundColor(.finnBlue)
+                                .padding(.leading, 10)
+                                .padding(.top, 5)
+                            Spacer()
+                        }
+                        Rectangle()
+                            .fill(Color.lighterBlue)
+                            .frame(width: screen.size.width*0.93, height: 80)
+                            .cornerRadius(10)
+                            .overlay(
+                        HStack{
+                            Image("finnUser")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.gray)
+                                .background(Color.brightGreyColor)
+                                .cornerRadius(35)
+                                .padding(.leading, 5)
+                            VStack{
+                                HStack{
+                                    Text("Vis kontaktinformasjon")
+                                        .font(.system(size:14))
+                                        .foregroundColor(.finnBlue)
+                                    Spacer()
+                                }
+                                HStack{
+                                    Text("Har vært på FINN siden 2017")
+                                        .font(.system(size:10))
+                                    Spacer()
+                                }
+                            }
+                            Spacer()
+                        }
+                        )
+                        HStack(spacing:0){
+                            Image(systemName: "mappin")
+                                .foregroundColor(.finnBlue)
+                                .padding(.leading, 12)
+                            Text("1337 ")
+                                .foregroundColor(.finnBlue)
+                                .bold()
+                            Text(ad.location! ?? "Oslo")
+                                .foregroundColor(.finnBlue)
+                                .bold()
+                            Spacer()
+                        }
+                        .padding(.top, 10)
+                        VStack{
+                            HStack{
+                                Text("Om annonsen")
+                                    .font(.system(size:18))
+                                    .fontWeight(.semibold)
+                                    .padding(.leading, 14)
+                                Spacer()
+                            }
+                            .padding(.top, 5)
+                            HStack(spacing: 7){
+                                Text("FINN-Kode")
+                                    .font(.system(size:14))
+                                    .bold()
+                                    .padding(.leading, 15)
+                                Text(ad.favourite?.adId ?? "228394827")
+                                    .font(.system(size:14))
+                                Spacer()
+                            }
+                            HStack(spacing: 7){
+                                Text("Sist endret")
+                                    .font(.system(size:14))
+                                    .bold()
+                                    .padding(.leading, 15)
+                                Text("3. apr. 2023, 03:25")
+                                    .font(.system(size:14))
+                                Spacer()
+                            }
+                        }
+                        
                     }
                 }
             }
@@ -202,6 +285,6 @@ struct AdDetailsView: View {
 
 struct AdDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        AdDetailsView(ad: Ad(id: "1", description: "AMADEUS SENZA GRANDE BT HØYTALLER + DAB BLÅ", url: "/2023/lol.jpg", adType: .b2B, location: "Stavanger", type: .ad, price: Price(value: 100, total: nil), image: AdImage(url: "2023/3/vertical-0/04/6/293/508/636_1678017296.jpg", height: 100, width: 100, type: .general, scalable: true), score: 0.70, favourite: Favourite(adId: "22", adType: "ad"), shippingOption: ShippingOption(label: .fiksFerdig)))
+        AdDetailsView(ad: Ad(id: "1", description: "AMADEUS SENZA GRANDE BT HØYTALLER + DAB BLÅ", url: "/2023/lol.jpg", adType: .b2B, location: "Stavanger", type: .ad, price: Price(value: 100, total: nil), image: AdImage(url: "2023/3/vertical-0/04/6/293/508/636_1678017296.jpg", height: 100, width: 100, type: .general, scalable: true), score: 0.70, favourite: Favourite(adId: "228394827", adType: "ad"), shippingOption: ShippingOption(label: .fiksFerdig)))
     }
 }
