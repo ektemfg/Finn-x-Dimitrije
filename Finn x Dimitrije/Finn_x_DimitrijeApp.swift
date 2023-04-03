@@ -44,13 +44,12 @@ struct Finn_x_DimitrijeApp: App {
                     
                     NavigationView {
                         // TODO: Make My Ads page
-                        Text("Mine annonser")
-                            .navigationTitle("Profile")
+                        FavouritesView()
                     }
                     .tabItem {
-                        Image("myAds")
+                        Image(selectedTab == 2 ? "fav" : "notFav")
                             .resizable()
-                            .tint(selectedTab == 2 ? .blue : .gray)
+                            .frame(width: 30, height: 30)
                     }
                     .tag(2)
                     NavigationView {
@@ -66,10 +65,10 @@ struct Finn_x_DimitrijeApp: App {
                     .tag(3)
                     NavigationView {
                         // TODO: Make My Ads page
-                        FavouritesView()
+                        FunView()
                     }
                     .tabItem {
-                        Image(selectedTab == 4 ? "fav" : "notFav")
+                        Image(systemName: selectedTab == 4 ? "balloon.fill" :"balloon")
                             .resizable()
                             .frame(width: 30, height: 30)
                     }

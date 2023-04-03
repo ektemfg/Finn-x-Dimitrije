@@ -10,35 +10,62 @@ import SwiftUI
 struct AdListView: View {
     @ObservedObject private var vm = AdListViewModel.shared
     var adList: [Ad] {
-        vm.adList
+        vm.favsOnly ? vm.favAdList : vm.adList
     }
     var body: some View {
-        List(adList, id: \.id) { ad in
+        if adList.isEmpty {
             VStack{
                 Divider()
-                AdView(ad: ad)
+                Spacer()
+                HStack(spacing:0) {
+                    Text("Vi ")
+                    Text("FINN")
+                        .font(.system(.title))
+                        .foregroundColor(.blue)
+                        .bold()
+                        .fontWeight(.black)
+                    Text("er ingenting her")
+                        .font(.system(.title))
+                }
+                Image("pus")
+                    .resizable()
+                    .frame(width: 250, height: 250)
+                VStack(){
+                    Text("Sjekk om du er tilkoblet.")
+                        .font(.system(.headline))
+                    Text("PS. Du kan alltid se dine favoritter")
+                        .font(.system(.headline))
+                }
+                Spacer()
             }
-            .listRowSeparator(.hidden)
-        }
-        .listStyle(.plain)
-        
-        
-        .navigationTitle(
-            Text("Torget")
-        )
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(leading: Button(action: {}) {
-            HStack{
-                Image(systemName: "chevron.left")
-                    .font(.subheadline)
+        } else {
+            List(adList, id: \.id) { ad in
+                VStack{
+                    Divider()
+                    AdView(ad: ad)
+                }
+                .listRowSeparator(.hidden)
+            }
+            .listStyle(.plain)
+            
+            
+            .navigationTitle(
+                Text("Torget")
+            )
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading: Button(action: {}) {
+                HStack{
+                    Image(systemName: "chevron.left")
+                        .font(.subheadline)
+                        .foregroundColor(.blue)
+                    Text("Hjem")
+                }
+            }
+                                , trailing: Button(action: {}) {
+                Text("Lagre søk")
                     .foregroundColor(.blue)
-                Text("Hjem")
-            }
+            })
         }
-                            , trailing: Button(action: {}) {
-            Text("Lagre søk")
-                .foregroundColor(.blue)
-        })
     }
         
     

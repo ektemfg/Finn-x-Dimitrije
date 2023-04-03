@@ -14,26 +14,28 @@ class DataService: ObservableObject {
     }()
     
     func fetchAds(completionHandler: @escaping (Result<AdResponse, Error>) -> Void) {
-        let url = Endpoints.data.url!
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                Logger.log("Could not fetch from \(url.description)", type: .error)
-                completionHandler(.failure(AppError.invalidUrl))
-                return
-            }
+        Task {
             do {
-                let decoder = JSONDecoder()
-                let adResponse = try decoder.decode(AdResponse.self, from: data)
+                let adResponse = try await fetchAdsAsync()
                 completionHandler(.success(adResponse))
             } catch {
-                Logger.log("Could not decode JSON", type: .error)
-                Logger.log(error.localizedDescription, type: .error)
-                print(error)
-                completionHandler(.failure(AppError.invalidJson))
+                completionHandler(.failure(error))
             }
-            
         }
-        task.resume()
     }
+    
+    func fetchAdsAsync() async throws -> AdResponse {
+        let url = Endpoints.data.url!
+        let urlRequest = URLRequest(url: url)
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw AppError.invalidUrl
+        }
+        let decoder = JSONDecoder()
+        let adResponse = try decoder.decode(AdResponse.self, from: data)
+        return adResponse
+    }
+
+
     
 }

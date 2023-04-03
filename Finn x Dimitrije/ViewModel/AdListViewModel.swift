@@ -14,6 +14,7 @@ enum FavouriteOperation {
 }
 
 class AdListViewModel: ObservableObject {
+    @Published var favsOnly: Bool = false
     let dataService = DataService.shared
     @Published var adList: [Ad] = []
     @Published var favAdList: [Ad] = []
