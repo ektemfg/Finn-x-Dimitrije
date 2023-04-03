@@ -111,9 +111,44 @@ struct AdDetailsView: View {
                                 .cornerRadius(8)
                         Rectangle()
                             .fill(Color.clear)
-                            .frame(width: screen.size.width*0.92, height: 150)
+                            .frame(width: screen.size.width*0.93, height: 135)
                             .cornerRadius(2)
                             .border(.gray)
+                            .opacity(0.5)
+                            .overlay(
+                                VStack(){
+                                    Text("Fiks ferdig frakt og betaling")
+                                        .font(.system(size:12))
+                                        .fontWeight(.semibold)
+                                        .lineLimit(1)
+                                        .padding(.top, 10)
+                                    Text("Vi sier ifra til selger at du vil fikse frakt og betaling gjennom FINN. Vi varsler deg når du kan legge inn et bud.")
+                                        .font(.system(size:14))
+                                        .fontWeight(.light)
+                                        .lineLimit(3)
+                                        .multilineTextAlignment(.center)
+                                    Button(action: {}) {
+                                        HStack{
+                                            Image("fiksferdig")
+                                                .frame(width:30, height: 30)
+                                            Text("Be om Fiks ferdig")
+                                                .font(.subheadline)
+                                                .fontWeight(.medium)
+                                                .frame(maxWidth: .infinity)
+                                        }
+                                    }
+                                    .buttonStyle(.bordered)
+                                    .tint(.white)
+                                    .frame(width: screen.size.width*0.7, height: 35)
+                                    .cornerRadius(10)
+                                    .foregroundColor(.finnBlue)
+                                    .border(Color.gray)
+                                    .cornerRadius(3)
+                                    Spacer()
+                                }
+                            )
+                            .padding(.top, 10)
+                        Text("\(ad.description) er ganske kul ting du kan kjøpe her på finn. I tillegg til den, finnes det hundrevis av ting innenfor \(ad.adType)")
                     }
                 }
             }
