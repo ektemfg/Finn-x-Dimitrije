@@ -52,6 +52,17 @@ struct FavouritesView: View {
                     Divider()
                     AdView(ad: ad)
                 }
+                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                            Button(action: {
+                                vm.userDefaultsOperation(.removeFavorite, ad: ad)
+                            }) {
+                                HStack {
+                                                    Image(systemName: "heart.slash")
+                                                    Text("Slett")
+                                                }
+                            }
+                            .tint(.red)
+                        }
                 .listRowSeparator(.hidden)
             }
             .listStyle(.plain)

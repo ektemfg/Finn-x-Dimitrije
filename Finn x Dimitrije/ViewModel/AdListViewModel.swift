@@ -21,6 +21,7 @@ class AdListViewModel: ObservableObject {
     @Published var favAdList: [Ad] = []
     @Published var isLoading: Bool = false
     @Published var fetchedAllAds: Bool = false
+    private var isAdsLoaded: Bool = false
     private var totalNumberOfAds: Int = 1
     var favoriteAds: Set<String> = []
     
@@ -29,9 +30,7 @@ class AdListViewModel: ObservableObject {
         self.loadAds()
     }
     
-    static var shared: AdListViewModel = {
-        AdListViewModel()
-    }()
+    static let shared = AdListViewModel()
     
     func goFetchAds() {
         if isLoading {
@@ -69,6 +68,7 @@ class AdListViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         self.isLoading = false
                         self.onlyOffline = true
+                        self.isAdsLoaded = true
                     }
             
         }
@@ -112,6 +112,9 @@ class AdListViewModel: ObservableObject {
       }
     
      func loadAds() {
+         guard !isAdsLoaded else {
+             return
+         }
         do {
             Logger.log("Loading Favorites from UserDefaults.", type: .info)
             if let savedIds = UserDefaults.standard.array(forKey: "favoriteAds") as? [String] {

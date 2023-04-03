@@ -51,7 +51,7 @@ struct AdView: View {
                             Image("fiksferdig")
                                 .resizable()
                                 .colorMultiply(.darkerYellowColor)
-                                .bold()
+                                .font(.body.weight(.bold))
                                 .frame(width: 14, height: 14)
                             Text("Fiks ferdig")
                                 .font(.custom("Inter", size: 8))

@@ -78,7 +78,7 @@ struct AdDetailsView: View {
                             Text(ad.description!)
                                 .font(.title)
                                 .padding(.leading, 15)
-                                .fontWeight(.light)
+                                .font(.body.weight(.light))
                             Spacer()
                         }
                         HStack{
@@ -92,7 +92,7 @@ struct AdDetailsView: View {
                             Text(String((ad.price?.total ?? ad.price?.value) ?? 1337))
                                 .padding(.leading, 15)
                                 .font(.title)
-                                .fontWeight(.medium)
+                                .font(.body.weight(.medium))
                             Text(" kr")
                                 .font(.title)
                                 .fontWeight(.medium)
@@ -153,7 +153,7 @@ struct AdDetailsView: View {
                             .padding(.horizontal, 10)
                             .padding(.top, 5)
                             .font(.subheadline)
-                            .fontWeight(.light)
+                            .font(.body.weight(.light))
                         HStack{
                             Text("+ Vis hele beskrivelsen")
                                 .font(.system(size:15))
