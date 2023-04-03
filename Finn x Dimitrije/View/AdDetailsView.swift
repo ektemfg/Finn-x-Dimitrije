@@ -230,7 +230,72 @@ struct AdDetailsView: View {
                                     .font(.system(size:14))
                                 Spacer()
                             }
+                            
+                            HStack{
+                                Text("Rapporter svindel/regelbrudd")
+                                    .font(.system(size:14))
+                                    .foregroundColor(.finnBlue)
+                                    .padding(.leading, 15)
+                                Spacer()
+                            }
+                            .padding(.top, 20)
+                            HStack{
+                                Text("Trygg på FINN")
+                                    .font(.system(size:14))
+                                    .foregroundColor(.finnBlue)
+                                    .padding(.leading, 15)
+                                Spacer()
+                            }
+                            .padding(.top, 10)
+                            HStack{
+                                Text("Dimitrije / Random / Annonser")
+                                    .font(.system(size:14))
+                                    .foregroundColor(.finnBlue)
+                                    .bold()
+                                    .padding(.leading, 15)
+                                Spacer()
+                            }
+                            .padding(.top, 10)
+                            Rectangle()
+                                .fill(Color.lighterBlue)
+                                .frame(width: screen.size.width*0.93, height: 135)
+                                .cornerRadius(3)
+                                .opacity(0.5)
+                                .overlay(
+                                    VStack(alignment:.leading){
+                                        Text("Fiks ferdig frakt og betaling")
+                                            .font(.system(size:12))
+                                            .fontWeight(.semibold)
+                                            .lineLimit(1)
+                                            .padding(.top, 10)
+                                        Text("Vi hjelper selger å sende varen til deg")
+                                            .font(.system(size:14))
+                                            .fontWeight(.light)
+                                            .lineLimit(3)
+                                            .multilineTextAlignment(.leading)
+                                        Button(action: {}) {
+                                            HStack{
+                                                Image("fiksferdig")
+                                                    .frame(width:30, height: 30)
+                                                Text("Be om Fiks ferdig")
+                                                    .font(.subheadline)
+                                                    .fontWeight(.medium)
+                                                    .frame(maxWidth: .infinity)
+                                            }
+                                        }
+                                        .buttonStyle(.bordered)
+                                        .tint(.white)
+                                        .frame(width: screen.size.width*0.7, height: 35)
+                                        .cornerRadius(10)
+                                        .foregroundColor(.finnBlue)
+                                        .border(Color.gray)
+                                        .cornerRadius(3)
+                                        Spacer()
+                                    }
+                                )
+                                .padding(.top, 10)
                         }
+                        
                         
                     }
                 }
