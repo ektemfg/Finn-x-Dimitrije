@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AdDetailsView: View {
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.openURL) var openURL
     let ad: Ad
     @State var isFavorite: Bool
     @StateObject  var vm: AdListViewModel
@@ -262,7 +263,7 @@ struct AdDetailsView: View {
                                 .cornerRadius(3)
                                 .opacity(0.5)
                                 .overlay(
-                                    VStack(alignment:.leading){
+                                    VStack(alignment:.center){
                                         Text("Fiks ferdig frakt og betaling")
                                             .font(.system(size:12))
                                             .fontWeight(.semibold)
@@ -273,15 +274,14 @@ struct AdDetailsView: View {
                                             .fontWeight(.light)
                                             .lineLimit(3)
                                             .multilineTextAlignment(.leading)
-                                        Button(action: {}) {
-                                            HStack{
-                                                Image("fiksferdig")
-                                                    .frame(width:30, height: 30)
-                                                Text("Be om Fiks ferdig")
+                                        Button(action: {
+                                            openURL(URL(string: "https://www.finn.no/bap/artikler/aktuelt/fiks-ferdig")!)
+                                        }) {
+                                                Text("Mer om Fiks ferdig")
                                                     .font(.subheadline)
                                                     .fontWeight(.medium)
                                                     .frame(maxWidth: .infinity)
-                                            }
+                                            
                                         }
                                         .buttonStyle(.bordered)
                                         .tint(.white)
@@ -290,10 +290,31 @@ struct AdDetailsView: View {
                                         .foregroundColor(.finnBlue)
                                         .border(Color.gray)
                                         .cornerRadius(3)
+                                        Button(action: {
+                                            openURL(URL(string: "https://hjelpesenter.finn.no/hc/no/articles/4406998234130-Fiks-ferdig-spørsmål-og-svar")!)
+                                        }) {
+                                                Text("Se alle fraktalternativer")
+                                                    .font(.subheadline)
+                                                    .fontWeight(.medium)
+                                                    .frame(maxWidth: .infinity)
+                                                    .padding(.bottom, 5)
+                                            
+                                        }
                                         Spacer()
+                                       
                                     }
+                                    
                                 )
-                                .padding(.top, 10)
+                                .padding(.top, 5)
+                            HStack(spacing:0){
+                                Text("Made with")
+                                    .font(.caption)
+                                Image(systemName: "heart.fill")
+                                    .foregroundColor(.red)
+                                    .frame(width:30,height:30)
+                                Text("by Dimitrije Pesic")
+                                    .font(.caption)
+                            }
                         }
                         
                         
