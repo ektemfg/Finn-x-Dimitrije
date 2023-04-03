@@ -21,4 +21,7 @@ extension Color {
     static var brightGreyColor: Color {
         return Color("brightGray")
     }
+    static var finnBlue: Color {
+        return Color("finnBlue")
+    }
 }

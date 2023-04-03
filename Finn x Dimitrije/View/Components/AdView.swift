@@ -21,6 +21,7 @@ struct AdView: View {
         NavigationLink("",
                        destination: AdDetailsView(ad: ad)).opacity(0)
         .buttonStyle(PlainButtonStyle())
+
         HStack(spacing: 10) {
             VStack {
                 ZStack(alignment: .topLeading) {
