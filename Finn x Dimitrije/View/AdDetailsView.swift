@@ -291,7 +291,7 @@ struct AdDetailsView: View {
                                         .border(Color.gray)
                                         .cornerRadius(3)
                                         Button(action: {
-                                            openURL(URL(string: "https://hjelpesenter.finn.no/hc/no/articles/4406998234130-Fiks-ferdig-spørsmål-og-svar")!)
+                                            openURL(URL(string: "https://www.finn.no/bap/artikler/aktuelt/fiks-ferdig")!)
                                         }) {
                                                 Text("Se alle fraktalternativer")
                                                     .font(.subheadline)
@@ -343,7 +343,7 @@ struct AdDetailsView: View {
                     isFavorite.toggle()
                 }) {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
-                        .foregroundColor(isFavorite ? Color.blue : Color.gray)
+                        .foregroundColor(Color.blue)
                         .font(.system(size: 20))
                 }
                 .onChange(of: isFavorite) { value in

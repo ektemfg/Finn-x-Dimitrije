@@ -55,8 +55,7 @@ struct Finn_x_DimitrijeApp: App {
                     .tag(2)
                     NavigationView {
                         // TODO: Make My Ads page
-                        Text("Meldinger")
-                            .navigationTitle("Meldinger")
+                       MessagesView()
                     }
                     .tabItem {
                         Image("message")

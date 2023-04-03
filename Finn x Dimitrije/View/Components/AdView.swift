@@ -72,10 +72,10 @@ struct AdView: View {
                     HStack {
                         Text("\(ad.hoursSinceAdded) \(ad.adType == .realestate ? "dager" : "timer") siden")
                             .foregroundColor(.gray)
-                            .font(.custom("default", size: 10))
+                            .font(.custom("default", size: 14))
                         Text("\(ad.location ?? "Oslo")")
                             .foregroundColor(.gray)
-                            .font(.custom("default", size: 10))
+                            .font(.custom("default", size: 14))
                         Spacer()
                         Button(action: {
                             isFavorite.toggle()
@@ -96,12 +96,12 @@ struct AdView: View {
                 
                 Text("\(ad.description ?? "Kul ting")")
                     .lineLimit(1)
-                    .font(.custom("Inter", size: 12))
+                    .font(.custom("Inter", size: 16))
                     .foregroundColor(Color(red: 0.28, green: 0.27, blue: 0.27))
                     .padding(.bottom, 1)
                 
                 Text("\(ad.price?.total ?? ad.price?.value ?? 1337) kr")
-                    .font(.custom("Inter", size: 10))
+                    .font(.custom("Inter", size: 14))
                     .foregroundColor(.black)
                 
                 Spacer()

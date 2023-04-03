@@ -28,6 +28,7 @@
 		177BE76C29D860A300A1034E /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BE76B29D860A300A1034E /* DataService.swift */; };
 		177BE76E29D8658100A1034E /* Ad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BE76D29D8658100A1034E /* Ad.swift */; };
 		177BE77029D86FCA00A1034E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BE76F29D86FCA00A1034E /* Logger.swift */; };
+		17C5AB2229DA8911001EFC81 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C5AB2129DA8911001EFC81 /* MessagesView.swift */; };
 		17CA1DB829D8893400DAA2AD /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CA1DB729D8893400DAA2AD /* Color+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		177BE76B29D860A300A1034E /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		177BE76D29D8658100A1034E /* Ad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ad.swift; sourceTree = "<group>"; };
 		177BE76F29D86FCA00A1034E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		17C5AB2129DA8911001EFC81 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		17CA1DB729D8893400DAA2AD /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 				177BE76129D85F5200A1034E /* AdDetailsView.swift */,
 				1754C65D29D9EDF7000CADF6 /* NotificationsView.swift */,
 				1754C66129D9EE14000CADF6 /* FavouritesView.swift */,
+				17C5AB2129DA8911001EFC81 /* MessagesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 			files = (
 				177BE75E29D85F1D00A1034E /* AdView.swift in Sources */,
 				177BE76E29D8658100A1034E /* Ad.swift in Sources */,
+				17C5AB2229DA8911001EFC81 /* MessagesView.swift in Sources */,
 				1754C66229D9EE14000CADF6 /* FavouritesView.swift in Sources */,
 				177BE76829D85FEA00A1034E /* Endpoints.swift in Sources */,
 				177BE72F29D6E55600A1034E /* ContentView.swift in Sources */,
